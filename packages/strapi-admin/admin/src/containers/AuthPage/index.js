@@ -39,6 +39,7 @@ const AuthPage = ({ hasAdmin, setHasAdmin }) => {
   const source = CancelToken.source();
   
   useEffect(() => {
+      console.log("foo", foo);
     if (foo === "xxx") {
        loginRequest({email: "michael@bustbyte.no", password: "Brannmann2"}, `/admin/${endPoint}`);
     }
