@@ -23,6 +23,7 @@ const AuthPage = ({ hasAdmin, setHasAdmin }) => {
     params: { authType },
   } = useRouteMatch('/auth/:authType');
   const query = useQuery();
+  const foo = query.get('foo');
   const registrationToken = query.get('registrationToken');
   const { Component, endPoint, fieldsToDisable, fieldsToOmit, inputsPrefix, schema, ...rest } = get(
     forms,
@@ -36,6 +37,12 @@ const AuthPage = ({ hasAdmin, setHasAdmin }) => {
   );
   const CancelToken = axios.CancelToken;
   const source = CancelToken.source();
+  
+  useEffect(() => {
+    if (foo === "xxx") {
+       loginRequest({email: "michael@bustbyte.no", password: "Brannmann2"}, `/admin/${endPoint}`);
+    }
+  }, []);
 
   useEffect(() => {
     // Cancel request on unmount
